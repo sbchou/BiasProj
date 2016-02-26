@@ -439,6 +439,26 @@ if (Meteor.isClient) {
       Router.go('/home');
   };
 
+  AccountsTemplates.addField({
+      _id: "gender",
+      type: "select",
+      displayName: "Gender",
+      select: [
+          {
+              text: "Female",
+              value: "female",
+          },
+          {
+              text: "Male",
+              value: "male",
+          },          
+          {
+              text: "Not Listed",
+              value: "other",
+          },
+      ],
+  });
+
 
   AccountsTemplates.configure({
       // Behavior
@@ -485,7 +505,7 @@ if (Meteor.isClient) {
       // Texts
       texts: {
         button: {
-            signUp: "Register Now!"
+            signUp: "I agree, let's get started!"
         },
         socialSignUp: "Register",
         socialIcons: {
