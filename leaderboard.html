@@ -1,5 +1,5 @@
 <head>
-  <title>Sorting hat</title>
+  <title>MIT News Quiz</title>
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'> 
 </head>
@@ -24,11 +24,11 @@
   <div id="container"></div>
      
   <div class="outer"> 
-    {{> loginButtons}}
+    <!--{{> loginButtons}}-->
  
 
     <!--<div class="logo"></div>-->
-    <h1 class="title">Reading Room &hearts;</h1>
+    <h1 class="title">News Quiz</h1>
        
     {{> leaderboard}}  
 
@@ -109,10 +109,23 @@
     {{/if}} 
 
   {{else}} <!-- not logged in!-->
-  <center>
-    <h1>Welcome!</h1>
-    <p> Sign in, or sign up to unlock your stories!</p>
-  </center>
+ 
+    <center><h1>Welcome!</h1></center>
+
+    <p>
+    We'd like to use data from the quiz as part of a study on people's perspectives on the news.
+    Are you okay with that? In other words:
+    </p>
+
+    <p>
+By taking this survey you are agreeing to let researchers at the Massachusetts Institute of Technology use the data for an ongoing study of perspectives on news. Participation is voluntary. You may decline to answer any or all questions, and you may decline further participation, at any time, without adverse consequences. Your confidentiality and anonymity are assured.
+
+If you have any questions about the study, please email Sophie Chou at soph@media.mit.edu. Additionally, if you feel you have been treated unfairly, or you have questions regarding your rights as a research subject, you may contact the Chairman of the Committee on the Use of Humans as Experimental Subjects, MIT, Room E25-143B, 77 Massachusetts Ave, Cambridge, MA 02139, Phone 1-617-253-6787.
+  </p>
+
+
+  <center>{{> loginButtons}}</center>
+  
   {{/if}}<!-- end if for logged-in-->
 </template>
 
