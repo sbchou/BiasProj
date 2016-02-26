@@ -38,7 +38,9 @@
  
 
 <template name="leaderboard">
+ 
 
+   {{> atNavButton}}  
  
      
   {{#if currentUser}} <!-- gotta be logged in -->
@@ -76,8 +78,7 @@
     {{#if allDone}}
       <center>
 
-      <h2> That's it for today's delivery! <br>
-       See you tomorrow <i class="ion-happy-outline"></i></h2>  
+      <h2> Thank you for participating <i class="ion-happy-outline"></i></h2>  
       </center>
    {{/if}} <!-- end "allDone" -->
 
@@ -124,11 +125,12 @@ If you have any questions about the study, please email Sophie Chou at soph@medi
   </p>
 
 
-  <center>{{> loginButtons}}</center>
+  <!--<center>{{> loginButtons}}</center>-->
+  {{> atForm}}   
   
   {{/if}}<!-- end if for logged-in-->
 </template>
-
+ 
  
 <template name="article">   
   <!--
@@ -173,10 +175,15 @@ If you have any questions about the study, please email Sophie Chou at soph@medi
  
   </ul>  
  
- 
-
 </template>
+
+<!--
  
+<template name="_loginButtonsAdditionalLoggedInDropdownActions">
+    <button class="btn btn-default btn-block" id="login-buttons-edit-profile">Edit profile</button>
+</template>
+
+-->
 
 
 <template name="result"> 

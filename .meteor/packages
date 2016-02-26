@@ -20,8 +20,6 @@ zhenya:progress
 
 
 jquery-csv
-accounts-ui
-accounts-twitter
 insecure
 keybindings
 accounts-password
@@ -38,3 +36,6 @@ yogiben:pretty-email
 keiths:octicons
 mystor:device-detection
 pagebakers:ionicons
+useraccounts:core
+twbs:bootstrap
+useraccounts:bootstrap
