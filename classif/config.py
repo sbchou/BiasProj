@@ -1,0 +1,5 @@
+__author__ = 'pralav'
+MODULE='election_news'
+NEWS_CLASS_MODEL_PATH='new_models.pkl'
+VECTORIZER_PATH='new_vectorizers.pkl'
+KBEST_PATH='new_kbests.pkl'

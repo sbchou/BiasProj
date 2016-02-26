@@ -1,0 +1,217 @@
+<head>
+  <title>Sorting hat</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'> 
+</head>
+
+<body>
+ 
+<!--
+<div id="nav"> 
+
+  <ul> 
+
+    <li>
+    {{> loginButtons}}</li>
+
+    <li><a href="#news">Answer to unlock next story!</a></li> 
+    <li><a href="#contact">Interesting: ★★★☆☆</a></li>
+    <li><a href="#contact">Credible: ★★★☆☆</a></li>
+    <li><a href="#contact">Fair: ★★★☆☆</a></li> 
+  </ul>
+</div> 
+-->
+  <div id="container"></div>
+     
+  <div class="outer"> 
+    {{> loginButtons}}
+ 
+
+    <!--<div class="logo"></div>-->
+    <h1 class="title">Reading Room &hearts;</h1>
+       
+    {{> leaderboard}}  
+
+      
+  </div>
+</body>
+ 
+
+<template name="leaderboard">
+
+ 
+     
+  {{#if currentUser}} <!-- gotta be logged in -->
+ 
+    <!-- progress bar is always at the top  
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow={{completeCount}}
+        aria-valuemin="0" aria-valuemax="100" style="width:{{percent_complete}}%">
+        <span class>{{completeCount}}</span>
+
+      </div>  
+    </div> 
+    -->
+ 
+    <!--<button class="showSettings">SETTINGS</button>-->
+
+
+    <!-- Admin always has opp to insert more. -->
+    <!--
+    {{#if isAdmin}}
+        <bold>Admin</bold>: do you want to add more entries?
+        <input type="file" id="files" name="files[]" multiple />
+        <output id="list"></output> 
+    {{/if}}
+    -->
+
+    {{#if noEntries}}
+      <center>
+        <h1>
+          Oops! Looks like you're out of articles.
+        </h1> 
+      </center>
+    {{/if}} <!-- end if for noEntries -->
+
+    {{#if allDone}}
+      <center>
+
+      <h2> That's it for today's delivery! <br>
+       See you tomorrow <i class="ion-happy-outline"></i></h2>  
+      </center>
+   {{/if}} <!-- end "allDone" -->
+
+
+    {{#if showSettings}}
+
+      <button class="hideSettings">Go Back to Reading</button>  
+      <center> <h2>SETTINGS</h2> 
+      <h2> What sort of stories do you want to read?</h2>
+
+      </center>
+
+
+      {{> settings}}  
+
+    {{else}} <!-- allDone --> 
+      <!-- otherwise business as usual -->  
+      {{#each articles}} 
+
+       {{> article}}
+ 
+
+        {{#if selectedArticle}}  
+        {{/if}}
+
+        {{else}}
+          <!-- do nothing -->
+      {{/each}}   
+    {{/if}} 
+
+  {{else}} <!-- not logged in!-->
+  <center>
+    <h1>Welcome!</h1>
+    <p> Sign in, or sign up to unlock your stories!</p>
+  </center>
+  {{/if}}<!-- end if for logged-in-->
+</template>
+
+ 
+<template name="article">   
+  <!--
+  <center><h1> Is this story about {{topics}} ?</h1></center>
+  -->
+
+ 
+  <ul class="article {{selected}}">     
+
+    <span class="name">{{{title}}}</span>
+    <!--<button class="heart">&hearts;</button> --> 
+
+    <span class="date">{{reading_time}} min</span>  
+    <span class="description">{{body}} </span>   
+
+
+ 
+        <div class="questions">  
+          <br>
+          {{#if fiction}}
+            Did you enjoy this short story?
+            <br>
+
+            <button class="yes"><i class="ion-happy-outline" style="font-size: 1.5em"></i></button>  
+             
+            <button class="no"><i class="ion-sad-outline" style="font-size: 1.5em"></i></button> 
+           
+          {{else}} 
+            Unlock your next story &ndash; what was this article about?
+            <br> 
+            <!--{{#each topics}}-->
+              <button class="yes">{{topics.[0]}}</button> 
+            <!--{{/each}}-->
+
+            <button class="yes">SOMETHING ELSE</button> 
+            <!-- placeholder control option -->
+          {{/if}}
+
+   
+      </div>  
+
+ 
+  </ul>  
+ 
+ 
+
+</template>
+ 
+
+
+<template name="result"> 
+  <ul class="article {{selected}}"> 
+    <h3>{{{article_title}}}</h3> 
+    {{#if user_label}} 
+      You said: Yes 
+    {{else}}
+      You said: No
+    {{/if}}
+    <br><br>
+      Sorting hat was {{article_conf}}% confident 
+    <br><br>
+    <button class="change">Change my answer</button> 
+    <p>Annotated: {{LocaleString timestamp}}</p>
+  </ul>
+</template>
+ 
+
+
+<template name="settings">
+  Your current topic selections:
+
+  {{currentUser.profile.topics}}
+
+  <form id="settings-form" action="action">
+ 
+   <input type="checkbox" name="owns" value="foreign policy/national security">foreign policy/national security<br/>
+   <input type="checkbox" name="owns" value="immigration">immigration<br/>
+   <input type="checkbox" name="owns" value="environment/energy">environment/energy<br/>
+   <input type="checkbox" name="owns" value="economy">economy<br/>
+   <input type="checkbox" name="owns" value="lgbt issues">lgbt issues<br/>
+   <input type="checkbox" name="owns" value="health care">health care<br/>
+   <input type="checkbox" name="owns" value="abortion">abortion<br/>
+   <input type="checkbox" name="owns" value="jobs/employment">jobs/employment<br/>
+   <input type="checkbox" name="owns" value="justice">justice<br/>
+   <input type="checkbox" name="owns" value="guns">guns<br/>
+   <input type="checkbox" name="owns" value="surveillance/privacy">surveillance/privacy<br/>
+   <input type="checkbox" name="owns" value="budget/taxation">budget/taxation<br/>
+   <input type="checkbox" name="owns" value="trade">trade<br/>
+   <input type="checkbox" name="owns" value="campaign finance">campaign finance<br/>
+   <input type="checkbox" name="owns" value="racial issues">racial issues<br/>
+   <input type="checkbox" name="owns" value="education">education<br/>
+   <input type="checkbox" name="owns" value="drugs">drugs<br/>
+   <input type="checkbox" name="owns" value="income inequality">income inequality<br/>
+   <input type="checkbox" name="owns" value="financial regulation">financial regulartion<br/>
+   <input type="checkbox" name="owns" value="ethics">ethics<br/>
+   <input type="checkbox" name="owns" value="personality">personality<br/>
+   <input type="submit"  value="send" />
+ </form>  
+</template>
