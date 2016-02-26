@@ -460,6 +460,100 @@ if (Meteor.isClient) {
   });
 
 
+  AccountsTemplates.addField({
+      _id: "age",
+      type: "select",
+      displayName: "Age",
+      select: [
+          {
+              text: "18-29",
+              value: "age1",
+          },
+          {
+              text: "30-49",
+              value: "age2",
+          },          
+          {
+              text: "50-64",
+              value: "age3",
+          },
+          {
+              text: "64+",
+              value: "age4",
+          },
+      ],
+  });
+
+    AccountsTemplates.addField({
+      _id: "party",
+      type: "select",
+      displayName: "Party affiliation",
+      select: [
+          {
+              text: "Democrat",
+              value: "democrat",
+          },
+          {
+              text: "Republican",
+              value: "republican",
+          },          
+          {
+              text: "Independent/Other",
+              value: "other",
+          },
+      ],
+  });
+
+
+    AccountsTemplates.addField({
+      _id: "candidate",
+      type: "radio",
+      displayName: "If the election were tomorrow, I would vote for...",
+      select: [
+          {
+              text: "Hillary Clinton",
+              value: "clinton",
+          },
+          {
+              text: "Bernie Sanders",
+              value: "sanders",
+          },          
+          {
+              text: "Donald Trump",
+              value: "trump",
+          },
+          {
+              text: "Marco Rubio",
+              value: "rubio",
+          },
+          {
+              text: "Ted Cruz",
+              value: "cruz",
+          },
+          {
+              text: "John Kasich",
+              value: "kasich",
+          },
+
+          {
+              text: "Ben Carson",
+              value: "carson",
+          },
+
+          {
+              text: "Not sure",
+              value: "unsure",
+          },
+
+          {
+              text: "Might not vote",
+              value: "novote",
+          },
+      ],
+  });
+
+
+
   AccountsTemplates.configure({
       // Behavior
       confirmPassword: true,
@@ -514,7 +608,18 @@ if (Meteor.isClient) {
         title: {
             forgotPwd: "Recover Your Password"
         },
-      },
+
+      title: {
+        changePwd: "Password Title",
+        enrollAccount: "Enroll Title",
+        forgotPwd: "Forgot Pwd Title",
+        resetPwd: "Reset Pwd Title",
+        signIn: "Before we begin...",
+        signUp: "Sign Up Title",
+        verifyEmail: "Verify Email Title",
+      }
+    },
+
   });
 
 
